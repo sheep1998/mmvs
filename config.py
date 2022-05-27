@@ -10,15 +10,16 @@ import os
 
 # 文件路径
 root_path = os.path.dirname(os.path.abspath(__file__))
-csv_file_path = os.path.join(root_path, "tmpFile", "ted_total_files.csv")
-train_csv_file_path = os.path.join(root_path, "tmpFile", "train.csv")
-test_csv_file_path = os.path.join(root_path, "tmpFile", "test.csv")
 
 # 所有的中间结果都不放在项目文件夹下
 if os.path.exists(os.path.join(root_path, "tmpFile")):
     tmpFile_path = os.path.join(root_path, "tmpFile")
 else:
     tmpFile_path = "/data/lihu/tmpFile"
+    
+csv_file_path = os.path.join(tmpFile_path, "ted_total_files.csv")
+train_csv_file_path = os.path.join(tmpFile_path, "train.csv")
+test_csv_file_path = os.path.join(tmpFile_path, "test.csv")
     
 aligned_tmp_path = os.path.join(tmpFile_path, "aligned")
 
