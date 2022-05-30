@@ -7,7 +7,7 @@ Created on Fri May 27 02:51:33 2022
 """
 
 from datasets import load_metric, load_dataset
-from transformers import AutoTokenizer, PegasusTokenizer
+from transformers import AutoTokenizer, PegasusTokenizer, PegasusConfig
 from transformers import AutoModelForSeq2SeqLM, DataCollatorForSeq2Seq, Seq2SeqTrainingArguments, Seq2SeqTrainer
 import config
 import numpy as np
@@ -66,7 +66,9 @@ def compute_metrics(eval_pred):
 tokenized_datasets = raw_datasets.map(preprocess_function, batched=True)
 
 # ----------------------------------- Fine-tuning the model -----------------------------------
-model = AutoModelForSeq2SeqLM.from_pretrained(config.model_pretrain_name)
+model_config = PegasusConfig.from_pretrained(config.model_pretrain_name)
+model_config.max_position_embeddings = config.input_length
+model = AutoModelForSeq2SeqLM.from_pretrained(config.model_pretrain_name, config = model_config)
 batch_size = 1
 model_name = config.model_name
 args = Seq2SeqTrainingArguments(

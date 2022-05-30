@@ -30,6 +30,6 @@ data_files = {"train": "/Users/lihu/github/paper/mmvs/tmpFile/train.csv",
               "test": "/Users/lihu/github/paper/mmvs/tmpFile/test.csv",
               }
 ds = load_dataset(path = "/Users/lihu/github/paper/mmvs/tmpFile", data_files = data_files)
-text = ds['train'][0]["document"]
+text = "summarize: " + ds['train'][0]["document"]
 res = pegasus_summary(text)
 print(res)

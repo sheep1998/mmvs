@@ -4,6 +4,8 @@
 Created on Fri May 27 02:49:36 2022
 
 @author: lihu
+
+note: 训练新模型，需要改动 model_name，不然会覆盖
 """
 
 import os
@@ -27,7 +29,7 @@ aligned_tmp_path = os.path.join(tmpFile_path, "aligned")
 model_pretrain_name = "google/pegasus-billsum"
 
 #模型存储路径
-model_name = "model1_autotoken"
+model_name = "model3_pegasusconfig_2048"
 model_save_folder_path = os.path.join(root_path, "models", model_name)
 if not os.path.exists(model_save_folder_path):
     os.mkdir(model_save_folder_path)
@@ -38,7 +40,7 @@ audio_token = "<aud>"
 additional_special_tokens = [video_token, audio_token]
 
 # length
-input_length = 1024
+input_length = 2048
 label_length = 128
 
 # metric
