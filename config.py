@@ -37,6 +37,10 @@ video_token = "<vid>"
 audio_token = "<aud>"
 additional_special_tokens = [video_token, audio_token]
 
+# length
+input_length = 1024
+label_length = 128
+
 # metric
 metric_name = "rouge"
 

@@ -32,11 +32,11 @@ prefix = "summarize: "
 
 def preprocess_function(examples):
     inputs = [ prefix + doc for doc in examples["document"]]
-    model_inputs = tokenizer(inputs, max_length=1024, truncation=True)
+    model_inputs = tokenizer(inputs, max_length=config.input_length, truncation=True)
 
     # Setup the tokenizer for targets
     with tokenizer.as_target_tokenizer():
-        labels = tokenizer(examples["description"], max_length=128, truncation=True)
+        labels = tokenizer(examples["description"], max_length=config.label_length, truncation=True)
 
     model_inputs["labels"] = labels["input_ids"]
     return model_inputs
