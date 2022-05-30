@@ -40,7 +40,9 @@ audio_token = "<aud>"
 additional_special_tokens = [video_token, audio_token]
 
 # length
+# 输入最大长度
 input_length = 2048
+# 训练输出最大长度
 label_length = 128
 
 # metric
